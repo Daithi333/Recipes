@@ -1,7 +1,9 @@
-<a class="list-group-item" 
-  href="#" 
-  style="text-decoration: none; color: black;"
-  (click)="onSelected()">
+<a 
+  style="cursor: pointer; text-decoration: none; color: black;"
+  [routerLink]="[index]"
+  class="list-group-item"
+  routerLinkActive="active">
+  <!--(click)="onSelected()"-->
   <div class="row justify-content-between align-items-center pl-3 pr-3">
     <div class="col-xs-6">
       <h4 class="list-group-item-heading">{{ recipe.name }}</h4>
