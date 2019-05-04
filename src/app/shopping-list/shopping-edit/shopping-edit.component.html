@@ -4,17 +4,25 @@
     <div class="form-group row pl-0">
       <div class="col-sm-5">
         <label for="name"><strong>Name</strong></label>
-        <input type="text" id="name" class="form-control">
+        <input 
+          type="text" 
+          id="name" 
+          class="form-control"
+          #nameInput>
       </div>
       <div class="col-sm-2">
         <label for=""><strong>Amount</strong></label>
-        <input type="number" id="amount" class="form-control">
+        <input 
+          type="number" 
+          id="amount" 
+          class="form-control"
+          #amountInput>
       </div>
     </div>
     <div class="col-xs-12">
-      <button class="btn btn-success m-1" type="submit">Add</button>
-      <button class="btn btn-danger m-1" type="button">Delete</button>
-      <button class="btn btn-warning m-1" type="button">Clear</button>
+      <button class="btn btn-success m-1" type="submit" (click)="onAddItem()">Add</button>
+      <button class="btn btn-danger m-1" type="button" (click)="onDeleteItem()">Delete</button>
+      <button class="btn btn-warning m-1" type="button" (click)="onClearItem()">Clear</button>
     </div>
   </form>
   <br>
