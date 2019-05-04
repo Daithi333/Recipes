@@ -1,10 +1,11 @@
 import { Ingredient } from '../shared/ingredient.model';
 
-import { EventEmitter } from '@angular/core';
+import { Subject } from 'rxjs';
 
 export class ShoppingListService {
     // because getIngredients() is returbing a copy via slice(), an event is needed to inform component that new data is available when addIngredient() is used 
-    ingredientsChanged = new EventEmitter<Ingredient[]>();
+    // ingredientsChanged = new EventEmitter<Ingredient[]>();
+    ingredientsChanged = new Subject<Ingredient[]>();
 
     private ingredients: Ingredient[] = [
         new Ingredient('Chicken Breast', 4),
@@ -17,7 +18,7 @@ export class ShoppingListService {
 
     addIngredient(ingredient: Ingredient) {
         this.ingredients.push(ingredient);
-        this.ingredientsChanged.emit(this.ingredients.slice());
+        this.ingredientsChanged.next(this.ingredients.slice());
     }
 
     addIngredients(ingredients: Ingredient[]) {
@@ -27,6 +28,6 @@ export class ShoppingListService {
         }*/
         // push can handle multiple objects or push the array as an object to other array, so can use ES6 feature - spread operator to turn array to list
         this.ingredients.push(...ingredients);
-        this.ingredientsChanged.emit(this.ingredients.slice());
+        this.ingredientsChanged.next(this.ingredients.slice());
     }
 }
