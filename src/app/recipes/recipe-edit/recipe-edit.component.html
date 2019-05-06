@@ -1,3 +1,69 @@
-<p>
-  recipe-edit works!
-</p>
+<div class="row">
+  <div class="col">
+    <form [formGroup]="recipeForm" (ngSubmit)="onSubmit()">
+      <div class="form-group">
+        <button 
+          class="btn btn-success m-1" 
+          type="submit"
+          [disabled]="!recipeForm.valid">Save</button>
+        <button class="btn btn-danger m-1" type="button" (click)="onCancel()">Cancel</button>
+      </div>
+      <div class="form-group">
+        <label for="name" class="font-weight-bold">Name</label>
+        <input 
+          type="text" 
+          id="name" 
+          class="form-control"
+          formControlName="name">
+      </div>
+      <div class="form-group">
+        <label for="imagePath" class="font-weight-bold">Image URL</label>
+        <input 
+          type="text" 
+          id="imagePath" 
+          class="form-control"
+          formControlName="imagePath"
+          #imagePath>
+      </div>
+      <div class="form-group">
+        <img [src]="imagePath.value" alt="Recipe Image" class="img-fluid">
+      </div>
+      <div class="form-group">
+        <label for="description" class="font-weight-bold">Description</label>
+        <textarea 
+          type="text" 
+          id="description" 
+          class="form-control" 
+          rows="6"
+          formControlName="description">
+        </textarea>
+      </div>
+      <div formArrayName="ingredients">
+        <label for="ingredinets" class="font-weight-bold">Ingredients</label>
+        <div
+          class="form-row"
+          *ngFor="let ingredientCtrl of getControls(); let i = index" 
+          [formGroupName]="i">
+          <div class="form-group col-8">
+            <input 
+              type="text" 
+              class="form-control"
+              formControlName="name">
+          </div>
+          <div class="form-group col-3">
+            <input 
+              type="number" 
+              class="form-control"
+              formControlName="amount">
+          </div>
+          <div class="form-group col-1 text-center my-auto sinkButton">
+            <button class="btn btn-danger" type="button" (click)="onDeleteIngredient(i)">X</button>
+          </div>
+        </div>
+        <div class="form-group">
+          <button class="btn btn-success mt-2" type="button" (click)="onAddIngredient()">Add Ingredient</button>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>
