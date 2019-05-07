@@ -32,7 +32,12 @@ export class RecipeService {
       ])
     ];
 
-  constructor(private shoppinhListService: ShoppingListService) {}
+  constructor(private shoppingListService: ShoppingListService) {}
+
+  setRecipes(recipes: Recipe[]) {
+    this.recipes = recipes;
+    this.recipesChanged.next(this.recipes.slice());
+  }
     
   getRecipes() {
     //no args slice will return a copy of this service's array
@@ -40,7 +45,7 @@ export class RecipeService {
   }
 
   addIngredientsToShoppingList(ingredients: Ingredient[]) {
-    this.shoppinhListService.addIngredients(ingredients);
+    this.shoppingListService.addIngredients(ingredients);
   }
 
   getRecipe(index: number) {
