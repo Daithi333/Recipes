@@ -3,8 +3,7 @@
   <button 
     class="navbar-toggler" 
     type="button"
-    data-toggle="collapse"
-    data-target="#navbarSupportedContent">
+    data-toggle="collapse">
     <span class="navbar-toggler-icon"></span>
   </button>
   
@@ -21,7 +20,7 @@
     </ul>
     <ul class="nav nav-pills ml-auto text-primary">
       <!-- Using property binding on the ngIf to wrap multiple -->
-      <ng-template [ngIf]="!authService.isAuthenticated()">
+      <ng-template [ngIf]="!isAuthenticated()">
         <li class="nav-item">
           <a class="nav-link" routerLink="/signup" routerLinkActive="active">Register</a>
         </li>
@@ -29,10 +28,10 @@
           <a class="nav-link" routerLink="/signin" routerLinkActive="active">Login</a>
         </li>
       </ng-template>
-      <li class="nav-item" *ngIf="authService.isAuthenticated()">
+      <li class="nav-item" *ngIf="isAuthenticated()">
         <a class="nav-link" style="cursor: pointer;"(click)="onLogout()">Logout</a>
       </li>
-      <li ngbDropdown class="dropdown" appDropdown *ngIf="authService.isAuthenticated()">
+      <li ngbDropdown class="dropdown" appDropdown *ngIf="isAuthenticated()">
         <a 
           ngbDropdownToggle class="dropdown-toggle"
           role="button"
