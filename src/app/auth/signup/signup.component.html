@@ -1,0 +1,37 @@
+<div class="row">
+  <div class="card col-xs-12 col-md-6 col-lg-4 col-xl-3 p-5 mx-auto shadow p-3 mb-4 rounded maxWidth">
+    <h3 class="text-center">Register</h3>
+    <small class="text-muted text-center">Already signed up? <a routerLink="/signin" class="text-decoration-none">Sign In</a></small>  
+    <br>
+    <form (ngSubmit)="onSignup(f)" #f="ngForm">
+      <div class="form-group">
+        <label for="email" class="font-weight-bold">Email</label>
+        <input 
+          class="form-control" 
+          type="email" id="email" 
+          name="email" placeholder="Enter email"
+          ngModel 
+          required 
+          email 
+          #email="ngModel">
+        <small class="form-text text-muted" *ngIf="!email.valid && email.touched">Please enter valid email</small>
+      </div>
+      <div class="form-group">
+        <label for="password" class="font-weight-bold">Password</label>
+        <input 
+          class="form-control" 
+          type="password" 
+          id="password" 
+          name="password" 
+          placeholder="Enter password" 
+          ngModel 
+          required           
+          pattern="^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d!$%@#£€*?&]{6,}$"
+          #password="ngModel">
+        <small class="form-text text-muted" *ngIf="!password.valid && password.touched">Password should be at least 6 characters and contain at least 1 number</small>
+      </div>
+      <br>
+      <button class="btn btn-primary btn-block" type="submit" [disabled]="!f.valid">Sign Up</button>
+    </form>
+  </div>
+</div>

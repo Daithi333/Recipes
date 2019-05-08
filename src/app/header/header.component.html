@@ -12,15 +12,32 @@
     <ul class="nav nav-pills">
       <!-- <li><a class="nav-link" href="#" (click)="onSelect('recipe')">Recipes</a></li>
       <li><a class="nav-link" href="#" (click)="onSelect('shopping-list')">Shopping List</a></li> -->
-      <li class="nav-item"><a class="nav-link" routerLinkActive="active" routerLink="/recipes">Recipes</a></li>
-      <li class="nav-item"><a class="nav-link" routerLinkActive="active" routerLink="/shopping-list">Shopping List</a></li>
+      <li class="nav-item">
+        <a class="nav-link" routerLink="/recipes" routerLinkActive="active">Recipes</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" routerLink="/shopping-list" routerLinkActive="active">Shopping List</a>
+      </li>
     </ul>
-    <ul class="nav ml-auto text-primary">
-      <li ngbDropdown class="dropdown" appDropdown>
+    <ul class="nav nav-pills ml-auto text-primary">
+      <!-- Using property binding on the ngIf to wrap multiple -->
+      <ng-template [ngIf]="!authService.isAuthenticated()">
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/signup" routerLinkActive="active">Register</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/signin" routerLinkActive="active">Login</a>
+        </li>
+      </ng-template>
+      <li class="nav-item" *ngIf="authService.isAuthenticated()">
+        <a class="nav-link" style="cursor: pointer;"(click)="onLogout()">Logout</a>
+      </li>
+      <li ngbDropdown class="dropdown" appDropdown *ngIf="authService.isAuthenticated()">
         <a 
           ngbDropdownToggle class="dropdown-toggle"
           role="button"
-          style="cursor: pointer;">
+          style="cursor: pointer;"
+          class="nav-link">
           Manage
           <span class="caret"></span>
         </a>
