@@ -1,13 +1,14 @@
-<nav class="navbar navbar-expand-md sticky-top" style="background-color: #e3f2fd;">
+<nav class="navbar navbar-expand-md navbar-light sticky-top" style="background-color: #e3f2fd;">
   <a class="navbar-brand" routerLink="/">Recipe Book</a>
-  <button 
-    class="navbar-toggler" 
+  <button
+    class="navbar-toggler"
     type="button"
-    data-toggle="collapse">
+    data-toggle="collapse"
+    ngbDropdown>
     <span class="navbar-toggler-icon"></span>
   </button>
-  
-  <div class="collapse navbar-collapse ml-2">
+
+  <div class="collapse navbar-collapse ml-2" ngbCollapse>
     <ul class="nav nav-pills">
       <!-- <li><a class="nav-link" href="#" (click)="onSelect('recipe')">Recipes</a></li>
       <li><a class="nav-link" href="#" (click)="onSelect('shopping-list')">Shopping List</a></li> -->
@@ -31,8 +32,8 @@
       <li class="nav-item" *ngIf="isAuthenticated()">
         <a class="nav-link" style="cursor: pointer;"(click)="onLogout()">Logout</a>
       </li>
-      <li ngbDropdown class="dropdown" appDropdown *ngIf="isAuthenticated()">
-        <a 
+      <li ngbDropdown class="dropdown" *ngIf="isAuthenticated()">
+        <a
           ngbDropdownToggle class="dropdown-toggle"
           role="button"
           style="cursor: pointer;"

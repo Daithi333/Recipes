@@ -9,6 +9,7 @@ import { AuthService } from '../../auth/auth.service';
     templateUrl: './header.component.html'
 })
 export class HeaderComponent {
+  collapse = true;
   // property holding an event emitter object
   // @Output() featureSelected = new EventEmitter<string>();
 
