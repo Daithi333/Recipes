@@ -32,12 +32,16 @@ export class HeaderComponent {
   onFetchData() {
     this.dataStorageService.getRecipes();
   }
-  
+
   onLogout() {
     this.authService.logout();
   }
 
   isAuthenticated() {
     return this.authService.isAuthenticated();
+  }
+
+  toggleCollapse() {
+    this.collapse = !this.collapse;
   }
 }

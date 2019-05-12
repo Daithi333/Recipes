@@ -2,13 +2,15 @@
   <a class="navbar-brand" routerLink="/">Recipe Book</a>
   <button
     class="navbar-toggler"
+    role="button"
     type="button"
-    data-toggle="collapse"
+    style="cursor: pointer;"
+    (click)="toggleCollapse()"
     ngbDropdown>
     <span class="navbar-toggler-icon"></span>
   </button>
 
-  <div class="collapse navbar-collapse ml-2" ngbCollapse>
+  <div class="collapse navbar-collapse ml-2" [ngbCollapse]="collapse">
     <ul class="nav nav-pills">
       <!-- <li><a class="nav-link" href="#" (click)="onSelect('recipe')">Recipes</a></li>
       <li><a class="nav-link" href="#" (click)="onSelect('shopping-list')">Shopping List</a></li> -->
